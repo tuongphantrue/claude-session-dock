@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClaudeSessionDock")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7eb865beba8964424267e7b8575e82bf14ca1577")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClaudeSessionDock")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClaudeSessionDock")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

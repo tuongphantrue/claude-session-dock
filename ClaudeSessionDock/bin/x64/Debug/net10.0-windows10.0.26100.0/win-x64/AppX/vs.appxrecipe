@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\bin\x64\Debug\net10.0-windows10.0.26100.0\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2026-07-15T06:49:56.288</Modified>
+      <Modified>2026-07-15T07:26:58.374</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\bin\x64\Debug\net10.0-windows10.0.26100.0\win-x64\ClaudeSessionDock.runtimeconfig.json">
       <PackagePath>ClaudeSessionDock.runtimeconfig.json</PackagePath>
-      <Modified>2026-07-15T06:49:55.700</Modified>
+      <Modified>2026-07-15T07:26:57.581</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.commandpalette.extensions\0.9.260303001\winmd\Microsoft.CommandPalette.Extensions.winmd">
       <PackagePath>Microsoft.CommandPalette.Extensions.winmd</PackagePath>
@@ -42,7 +42,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\obj\x64\Debug\net10.0-windows10.0.26100.0\win-x64\apphost.exe">
       <PackagePath>ClaudeSessionDock.exe</PackagePath>
-      <Modified>2026-07-15T06:49:55.037</Modified>
+      <Modified>2026-07-15T07:26:56.752</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Admin\.nuget\packages\microsoft.netcore.app.runtime.win-x64\10.0.10\runtimes\win-x64\native\Microsoft.DiaSymReader.Native.amd64.dll">
       <PackagePath>Microsoft.DiaSymReader.Native.amd64.dll</PackagePath>
@@ -806,7 +806,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\obj\x64\Debug\net10.0-windows10.0.26100.0\win-x64\R2R\ClaudeSessionDock.dll">
       <PackagePath>ClaudeSessionDock.dll</PackagePath>
-      <Modified>2026-07-15T06:49:56.109</Modified>
+      <Modified>2026-07-15T07:26:58.070</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\obj\x64\Debug\net10.0-windows10.0.26100.0\win-x64\R2R\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>
@@ -818,7 +818,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\obj\x64\Debug\net10.0-windows10.0.26100.0\win-x64\ClaudeSessionDock.deps.json">
       <PackagePath>ClaudeSessionDock.deps.json</PackagePath>
-      <Modified>2026-07-15T06:49:56.182</Modified>
+      <Modified>2026-07-15T07:26:58.200</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
@@ -850,7 +850,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\bin\x64\Debug\net10.0-windows10.0.26100.0\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2026-07-15T06:49:55.749</Modified>
+      <Modified>2026-07-15T07:26:57.687</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup></ItemGroup>

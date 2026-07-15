@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\ClaudeSessionDock\\ClaudeSessionDock\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{79F86DE5-70B1-4EC1-9832-DF428B55E466}|ClaudeSessionDock\\ClaudeSessionDock.csproj|c:\\users\\admin\\source\\claudesessiondock\\claudesessiondock\\claudesessiondock\\pages\\claudesessiondockpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{79F86DE5-70B1-4EC1-9832-DF428B55E466}|ClaudeSessionDock\\ClaudeSessionDock.csproj|solutionrelative:claudesessiondock\\pages\\claudesessiondockpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{79F86DE5-70B1-4EC1-9832-DF428B55E466}|ClaudeSessionDock\\ClaudeSessionDock.csproj|c:\\users\\admin\\source\\claudesessiondock\\claudesessiondock\\claudesessiondock\\claudesessiondockband.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79F86DE5-70B1-4EC1-9832-DF428B55E466}|ClaudeSessionDock\\ClaudeSessionDock.csproj|solutionrelative:claudesessiondock\\claudesessiondockband.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{79F86DE5-70B1-4EC1-9832-DF428B55E466}|ClaudeSessionDock\\ClaudeSessionDock.csproj|c:\\users\\admin\\source\\claudesessiondock\\claudesessiondock\\claudesessiondock\\claudesessiondockcommandsprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79F86DE5-70B1-4EC1-9832-DF428B55E466}|ClaudeSessionDock\\ClaudeSessionDock.csproj|solutionrelative:claudesessiondock\\claudesessiondockcommandsprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79F86DE5-70B1-4EC1-9832-DF428B55E466}|ClaudeSessionDock\\ClaudeSessionDock.csproj|c:\\users\\admin\\source\\claudesessiondock\\claudesessiondock\\claudesessiondock\\pages\\claudesessiondockpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79F86DE5-70B1-4EC1-9832-DF428B55E466}|ClaudeSessionDock\\ClaudeSessionDock.csproj|solutionrelative:claudesessiondock\\pages\\claudesessiondockpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,43 +22,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ClaudeSessionDockPage.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\ClaudeSessionDock\\ClaudeSessionDock\\ClaudeSessionDock\\Pages\\ClaudeSessionDockPage.cs",
               "RelativeDocumentMoniker": "ClaudeSessionDock\\Pages\\ClaudeSessionDockPage.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\ClaudeSessionDock\\ClaudeSessionDock\\ClaudeSessionDock\\Pages\\ClaudeSessionDockPage.cs",
               "RelativeToolTip": "ClaudeSessionDock\\Pages\\ClaudeSessionDockPage.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAUwIUAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAowEMAAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-15T06:49:40.479Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "ClaudeSessionDockCommandsProvider.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\ClaudeSessionDock\\ClaudeSessionDock\\ClaudeSessionDock\\ClaudeSessionDockCommandsProvider.cs",
               "RelativeDocumentMoniker": "ClaudeSessionDock\\ClaudeSessionDockCommandsProvider.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\ClaudeSessionDock\\ClaudeSessionDock\\ClaudeSessionDock\\ClaudeSessionDockCommandsProvider.cs",
               "RelativeToolTip": "ClaudeSessionDock\\ClaudeSessionDockCommandsProvider.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAuwBQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAuwBwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-15T06:37:12.311Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ClaudeSessionDockBand.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\ClaudeSessionDock\\ClaudeSessionDock\\ClaudeSessionDock\\ClaudeSessionDockBand.cs",
               "RelativeDocumentMoniker": "ClaudeSessionDock\\ClaudeSessionDockBand.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\ClaudeSessionDock\\ClaudeSessionDock\\ClaudeSessionDock\\ClaudeSessionDockBand.cs",
               "RelativeToolTip": "ClaudeSessionDock\\ClaudeSessionDockBand.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAiwIQAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAH8AAAAAAAAAAAA8wJcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-15T05:26:58.185Z",
               "EditorCaption": ""

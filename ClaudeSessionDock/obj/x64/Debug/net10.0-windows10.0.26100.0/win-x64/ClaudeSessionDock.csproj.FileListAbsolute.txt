@@ -228,3 +228,4 @@ C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\obj\
 C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\obj\x64\Debug\net10.0-windows10.0.26100.0\win-x64\ClaudeSessionDock.genpublishdeps.cache
 C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\obj\x64\Debug\net10.0-windows10.0.26100.0\win-x64\ProjectArchitectures.txt
 C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\obj\x64\Debug\net10.0-windows10.0.26100.0\win-x64\.winmd_cache\$Microsoft.CommandPalette.Extensions.winmd_639081364540000000.json
+C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\obj\x64\Debug\net10.0-windows10.0.26100.0\win-x64\ClaudeSessionDock.sourcelink.json

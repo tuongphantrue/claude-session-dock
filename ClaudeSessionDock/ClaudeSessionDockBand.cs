@@ -1,10 +1,8 @@
 // ClaudeSessionDockBand.cs
 //
-// A Command Palette Dock band that shows your Claude Code 5-hour session
-// usage (and weekly usage as a tooltip/subtitle). Modeled on the pattern
-// Microsoft uses for the built-in "Time & Date" NowDockBand: a lightweight
-// item that refreshes itself on a timer and exposes itself via
-// ICommandProvider3.GetDockBands().
+// Holds four short-lived dock items (session, weekly, context, updated),
+// refreshed on a shared timer from dock_status.json, and manually
+// refreshable by clicking any one of them.
 
 using System;
 using System.IO;
@@ -15,27 +13,36 @@ using Microsoft.CommandPalette.Extensions.Toolkit;
 
 namespace ClaudeSessionDock;
 
-public sealed partial class ClaudeSessionDockBand : CommandItem, IDisposable
+public sealed partial class ClaudeSessionDockBand : IDisposable
 {
     private readonly string _cachePath;
     private readonly Timer _timer;
 
-    public ClaudeSessionDockBand() : base(new ClaudeSessionDockPage())
+    private readonly ListItem _sessionItem;
+    private readonly ListItem _weeklyItem;
+    private readonly ListItem _contextItem;
+    private readonly ListItem _updatedItem;
+
+    public IListItem[] Items => [_sessionItem, _weeklyItem, _contextItem, _updatedItem];
+
+    public ClaudeSessionDockBand()
     {
         _cachePath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
             ".claude",
             "dock_status.json");
 
-        Title = "Claude";
-        Subtitle = "Session: --%";
-        Icon = new IconInfo("\uE945"); // placeholder glyph; swap for a Claude icon asset
+        // All four items trigger the same manual refresh - clicking any one
+        // of them re-reads the cache file immediately instead of waiting up
+        // to 15s for the timer.
+        var refreshCommand = new RefreshCommand(this);
+
+        _sessionItem = new ListItem(refreshCommand) { Title = "5h --%", Icon = new IconInfo("\uE945") };
+        _weeklyItem = new ListItem(refreshCommand) { Title = "Wk --%" };
+        _contextItem = new ListItem(refreshCommand) { Title = "Ctx --%" };
+        _updatedItem = new ListItem(refreshCommand) { Title = "Upd --:--" };
 
         Refresh(null);
-
-        // Poll every 15s. The cache file itself only changes when Claude Code
-        // sends you a new statusline update (i.e. after each turn), so this
-        // is just cheap enough to feel live without hammering disk I/O.
         _timer = new Timer(Refresh, null, TimeSpan.FromSeconds(15), TimeSpan.FromSeconds(15));
     }
 
@@ -45,17 +52,11 @@ public sealed partial class ClaudeSessionDockBand : CommandItem, IDisposable
         {
             if (!File.Exists(_cachePath))
             {
-                Subtitle = "No session data yet";
+                _sessionItem.Title = "No data";
                 return;
             }
 
             using var stream = File.Open(_cachePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-
-            // PropertyNameCaseInsensitive is required: dock_status.json uses
-            // camelCase (written by the PowerShell bridge script's ConvertTo-Json),
-            // but these C# properties are PascalCase. Without this, every field
-            // silently deserializes to its default (0 / null) instead of erroring -
-            // confirmed as the cause of the band showing "0%" for everything.
             var status = JsonSerializer.Deserialize<DockStatus>(stream, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
@@ -66,40 +67,36 @@ public sealed partial class ClaudeSessionDockBand : CommandItem, IDisposable
             }
 
             var resetIn = FormatResetCountdown(status.SessionResetsAt);
+            var updatedAtLocal = TryParseUpdatedAt(status.UpdatedAt);
 
-            // Compact form to match the other taskbar tiles (CPU/Memory/etc.):
-            // just "N%" in Title. Full breakdown lives in Subtitle for
-            // Default (non-compact) dock size or on hover.
-            Title = $"{status.SessionPercent}%";
-            Subtitle = $"Claude session: {status.SessionPercent}% used ({resetIn})  |  weekly: {status.WeeklyPercent}%";
-
-            // Swap icon glyph as usage climbs, mirroring the
-            // green/yellow/red convention used by the terminal statuslines.
-            Icon = status.SessionPercent switch
+            _sessionItem.Title = $"5h {status.SessionPercent}%";
+            _sessionItem.Subtitle = resetIn;
+            _sessionItem.Icon = status.SessionPercent switch
             {
-                >= 90 => new IconInfo("\uEA6A"), // warning glyph
-                >= 70 => new IconInfo("\uE7BA"), // caution glyph
-                _ => new IconInfo("\uE945"),      // normal glyph
+                >= 90 => new IconInfo("\uEA6A"),
+                >= 70 => new IconInfo("\uE7BA"),
+                _ => new IconInfo("\uE945"),
             };
+
+            _weeklyItem.Title = $"Wk {status.WeeklyPercent}%";
+            _weeklyItem.Subtitle = FormatResetCountdown(status.WeeklyResetsAt);
+
+            _contextItem.Title = $"Ctx {status.ContextPercent}%";
+            _contextItem.Subtitle = status.Model is null ? "" : status.Model;
+
+            _updatedItem.Title = updatedAtLocal is null ? "Upd --:--" : $"Upd {updatedAtLocal:t}";
+            _updatedItem.Subtitle = "Statusline event";
         }
         catch (Exception ex)
         {
-            // Surface parse/read errors instead of silently going stale forever -
-            // this is what would have hidden the epoch-seconds mismatch bug.
-            Subtitle = $"Claude Dock error: {ex.GetType().Name}";
+            _sessionItem.Title = "Error";
+            _sessionItem.Subtitle = ex.GetType().Name;
         }
     }
 
-    private static string ProgressBar(int percent, int width = 10)
-    {
-        var filled = (int)Math.Round(percent / 100.0 * width);
-        filled = Math.Clamp(filled, 0, width);
-        return new string('#', filled) + new string('.', width - filled);
-    }
+    private static DateTimeOffset? TryParseUpdatedAt(string? updatedAt) =>
+        DateTimeOffset.TryParse(updatedAt, out var parsed) ? parsed.ToLocalTime() : null;
 
-    // sessionResetsAt / weeklyResetsAt come through as Unix epoch seconds
-    // (e.g. 1784097000), not ISO date strings - confirmed from the actual
-    // dock_status.json payload. Convert and format as a countdown.
     private static string FormatResetCountdown(long? epochSeconds)
     {
         if (epochSeconds is null or 0)
@@ -116,8 +113,8 @@ public sealed partial class ClaudeSessionDockBand : CommandItem, IDisposable
         }
 
         return remaining.TotalHours >= 1
-            ? $"resets in {(int)remaining.TotalHours}h{remaining.Minutes}m"
-            : $"resets in {remaining.Minutes}m";
+            ? $"resets {(int)remaining.TotalHours}h{remaining.Minutes}m"
+            : $"resets {remaining.Minutes}m";
     }
 
     public void Dispose() => _timer.Dispose();
@@ -131,5 +128,25 @@ public sealed partial class ClaudeSessionDockBand : CommandItem, IDisposable
         public int WeeklyPercent { get; set; }
         public long? WeeklyResetsAt { get; set; }
         public string? UpdatedAt { get; set; }
+    }
+
+    // Manually re-reads dock_status.json when clicked, instead of waiting
+    // for the 15s polling timer.
+    private sealed partial class RefreshCommand : InvokableCommand
+    {
+        private readonly ClaudeSessionDockBand _band;
+
+        public RefreshCommand(ClaudeSessionDockBand band)
+        {
+            _band = band;
+        }
+
+        public override string Name => "Refresh Claude session stats";
+
+        public override ICommandResult Invoke()
+        {
+            _band.Refresh(null);
+            return CommandResult.KeepOpen();
+        }
     }
 }
