@@ -1,0 +1,1 @@
+C:\Users\Admin\source\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock\ClaudeSessionDock.csproj;x64
